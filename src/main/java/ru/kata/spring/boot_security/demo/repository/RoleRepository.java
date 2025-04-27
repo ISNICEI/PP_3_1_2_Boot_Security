@@ -1,8 +1,8 @@
 package ru.kata.spring.boot_security.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.kata.spring.boot_security.demo.model.User;
+import ru.kata.spring.boot_security.demo.model.Role;
 
-public class RoleRepository extends JpaRepository {
-
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    Role findByName(String name); // Поиск роли по названию (например, "ROLE_ADMIN")
 }
