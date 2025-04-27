@@ -11,6 +11,7 @@
   <div class="container-fluid">
     <span class="navbar-brand">Admin panel</span>
     <div class="navbar-text text-white ms-auto me-3">
+                <!--/*@thymesVar id="principal" type=""*/-->
                 <span th:text="${#authentication.principal.username} + ' with roles: ' +
                     ${#authentication.principal.authorities}"></span>
     </div>

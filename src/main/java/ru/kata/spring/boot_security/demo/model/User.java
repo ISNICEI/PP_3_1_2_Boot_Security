@@ -17,14 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails{
+public class User implements UserDetails {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,19 +46,11 @@ public class User implements UserDetails{
     @Setter
     private Set<Role> roles;
 
-    public User() {
-    }
-
-    public User(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
     @Getter
     @Setter
     @Column(name = "name")
     private String firstName;
+
     @Getter
     @Setter
     @Column(name = "last_name")
@@ -69,10 +59,24 @@ public class User implements UserDetails{
     @Setter
     @Column(name = "email")
     private String email;
+    @Getter
+    @Setter
+    @Column(name = "age")
+    private int age;
 
     public boolean hasRole(String roleName) {
         return roles.stream()
                 .anyMatch(role -> role.getName().equals(roleName));
+    }
+
+    public User() {
+    }
+
+    public User(String firstName, String lastName, String email, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
     }
 
     @Override

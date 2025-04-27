@@ -29,7 +29,7 @@ public class AdminController {
     @GetMapping("/new")
     public String newUserForm(Model model) {
         model.addAttribute("user", new User());
-        return "new-user";
+        return "new";
     }
 
     @PostMapping("/new")
@@ -42,7 +42,7 @@ public class AdminController {
     public String editUserForm(@PathVariable Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("allRoles", userService.findAll());
-        return "edit-user";
+        return "edit";
     }
 
     @PostMapping("/edit/{id}")
@@ -54,7 +54,7 @@ public class AdminController {
     @GetMapping("/delete/{id}")
     public String deleteUserForm(@PathVariable Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
-        return "delete-user";
+        return "delete";
     }
 
     @PostMapping("/delete/{id}")
