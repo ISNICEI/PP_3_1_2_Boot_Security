@@ -24,13 +24,13 @@ public class DataInitializer {
     @PostConstruct
     public void init() {
 
-        if (roleRepository.findByName("ROLE_ADMIN") == null) {
-            Role adminRole = new Role("ROLE_ADMIN");
+        if (roleRepository.findByName("ADMIN") == null) {
+            Role adminRole = new Role("ADMIN");
             roleRepository.save(adminRole);
         }
 
-        if (roleRepository.findByName("ROLE_USER") == null) {
-            Role userRole = new Role("ROLE_USER");
+        if (roleRepository.findByName("USER") == null) {
+            Role userRole = new Role("USER");
             roleRepository.save(userRole);
         }
 
@@ -40,8 +40,8 @@ public class DataInitializer {
             admin.setUsername("admin");
             admin.setPassword("admin");
             admin.setRoles(Set.of(
-                    roleRepository.findByName("ROLE_ADMIN"),
-                    roleRepository.findByName("ROLE_USER")
+                    roleRepository.findByName("ADMIN"),
+                    roleRepository.findByName("USER")
             ));
             userService.save(admin);
         }
@@ -50,7 +50,7 @@ public class DataInitializer {
             User user = new User();
             user.setUsername("user");
             user.setPassword("user");
-            user.setRoles(Set.of(roleRepository.findByName("ROLE_USER")));
+            user.setRoles(Set.of(roleRepository.findByName("USER")));
             userService.save(user);
         }
     }
